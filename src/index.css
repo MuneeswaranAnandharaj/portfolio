@@ -1053,6 +1053,14 @@ section {
   .about-info-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 5rem 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1089,6 +1097,9 @@ section {
   .project-features-grid {
     grid-template-columns: 1fr;
   }
+  .project-content h3 {
+    font-size: 1.25rem;
+  }
 
   .contact-grid {
     grid-template-columns: 1fr;
@@ -1097,6 +1108,20 @@ section {
 
   .about-info-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    padding-left: 45px;
+  }
+  .timeline::before {
+    left: 13px;
+  }
+  .timeline-dot {
+    left: 5px;
   }
 
   .footer-content {
@@ -1112,7 +1137,7 @@ section {
   }
 
   section {
-    padding: 4rem 0;
+    padding: 3.5rem 0;
   }
 
   .skills-grid {
@@ -1131,13 +1156,44 @@ section {
     flex-direction: column;
     align-items: center;
   }
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-greeting {
+    font-size: 1rem;
+  }
+  .hero-description {
+    font-size: 0.95rem;
+  }
 
   .project-card {
     padding: 1.5rem;
+  }
+  .project-meta-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .project-tech-tags {
+    gap: 0.4rem;
   }
 
   .cert-card {
     flex-direction: column;
     text-align: center;
+  }
+  .cert-card-wrapper {
+    max-width: 100%;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+  }
+
+  .timeline-card {
+    padding: 1.25rem;
+  }
+  .timeline-card h3 {
+    font-size: 1rem;
   }
 }
