@@ -1174,7 +1174,7 @@ section {
     flex-direction: column;
     gap: 0.75rem;
   }
-  .project-tech-tags {
+  .tech-tags {
     gap: 0.4rem;
   }
 
