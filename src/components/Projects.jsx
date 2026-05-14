@@ -18,7 +18,7 @@ const projects = [
       'User authentication & profile management',
       'Admin analytics dashboard',
     ],
-    techStack: ['React', 'Django', 'Django REST Framework', 'PostgreSQL', 'Bootstrap', 'JWT Auth', 'Stripe Payments'],
+    techStack: ['React', 'Django', 'Django REST Framework', 'MySQL', 'Bootstrap', 'JWT Auth', 'Stripe Payments'],
     team: 'Solo',
     publication: null,
   },
