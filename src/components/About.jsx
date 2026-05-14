@@ -7,8 +7,8 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   const stats = [
-    { label: 'Projects', value: '1+' },
-    { label: 'Technologies', value: '6+' },
+    { label: 'Projects', value: '2+' },
+    { label: 'Technologies', value: '8+' },
     { label: 'CGPA', value: '7.0' },
     { label: 'HSC %', value: '83%' },
   ]
