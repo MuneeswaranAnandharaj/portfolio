@@ -125,6 +125,15 @@ export default function Hero() {
             <FaLinkedinIn />
           </motion.a>
           <motion.a
+            href="https://github.com/MuneeswaranAnandharaj"
+            target="_blank"
+            rel="noopener"
+            whileHover={{ y: -3, scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <FaGithub />
+          </motion.a>
+          <motion.a
             href="tel:+919344272624"
             whileHover={{ y: -3, scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
