@@ -142,17 +142,6 @@ export default function Hero() {
           </motion.a>
         </motion.div>
       </motion.div>
-
-      <motion.button
-        className="scroll-btn"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        whileHover={{ y: 5 }}
-        onClick={() => scrollTo('about')}
-      >
-        <FiArrowDown />
-      </motion.button>
     </section>
   )
 }
