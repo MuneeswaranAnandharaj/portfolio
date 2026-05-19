@@ -955,7 +955,7 @@ section {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 160px;
+  min-height: 220px;
 }
 
 .form-group input:focus,
