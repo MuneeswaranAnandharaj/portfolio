@@ -6,7 +6,7 @@ import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
 export default function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
-  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: 'Hi Muneeswaran, I visited your portfolio and would like to connect with you regarding...' })
+  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' })
 
   const handleChange = (e) => {
     setFormState(prev => ({ ...prev, [e.target.name]: e.target.value }))
