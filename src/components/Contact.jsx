@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi'
-import { FaLinkedinIn } from 'react-icons/fa'
+import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
 
 export default function Contact() {
   const ref = useRef(null)
@@ -24,6 +24,7 @@ export default function Contact() {
     { icon: FiPhone, label: 'Phone', value: '+91 9344272624', href: 'tel:+919344272624' },
     { icon: FiMapPin, label: 'Location', value: 'Madurai, India', href: null },
     { icon: FaLinkedinIn, label: 'LinkedIn', value: 'muneeswaran-anandharaj', href: 'https://linkedin.com/in/muneeswaran-anandharaj' },
+    { icon: FaGithub, label: 'GitHub', value: 'MuneeswaranAnandharaj', href: 'https://github.com/MuneeswaranAnandharaj' },
   ]
 
   return (
