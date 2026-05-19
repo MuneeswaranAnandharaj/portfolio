@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { FiMail } from 'react-icons/fi'
-import { FaLinkedinIn } from 'react-icons/fa'
+import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
 
 export default function Footer() {
   return (
@@ -26,6 +26,15 @@ export default function Footer() {
             whileTap={{ scale: 0.9 }}
           >
             <FaLinkedinIn />
+          </motion.a>
+          <motion.a
+            href="https://github.com/MuneeswaranAnandharaj"
+            target="_blank"
+            rel="noopener"
+            whileHover={{ y: -3, scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <FaGithub />
           </motion.a>
           <motion.a
             href="tel:+919344272624"
