@@ -86,7 +86,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div variants={itemVariants} className="hero-buttons">
-          <a href="/resume.pdf" download="Muneeswaran_A_Resume.pdf" className="btn btn-download">
+          <a href="/MUNEESWARAN_A_CV.pdf" download="Muneeswaran_A_CV.pdf" className="btn btn-download">
             <FiDownload /> Download CV
           </a>
           <motion.button
