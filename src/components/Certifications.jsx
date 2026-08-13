@@ -21,7 +21,7 @@ const certifications = [
   {
     title: 'AI Full Stack Developer',
     institution: 'Certification Program',
-    date: 'March 20, 2026 - April 20, 2026',
+    date: 'January 2026 - March 2026',
     icon: FaRobot,
     color: '#06B6D4',
   },
