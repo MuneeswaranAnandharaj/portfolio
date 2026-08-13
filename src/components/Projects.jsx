@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FiUsers, FiAward, FiExternalLink, FiCalendar, FiTool } from 'react-icons/fi'
-import { FaCar, FaPython, FaReact } from 'react-icons/fa'
+import { FaCar, FaPython, FaReact, FaShareAlt } from 'react-icons/fa'
 import { SiDjango } from 'react-icons/si'
 
 const projects = [
@@ -38,6 +38,23 @@ const projects = [
     techStack: ['NLP', 'spaCy', 'SVM', 'BERT', 'VADER', 'LSTM', 'Random Forest', 'XG Boost', 'Anomaly Detection'],
     team: 'Team of 2',
     publication: 'Published in IJIRT, Vol 11, May 2025',
+  },
+  {
+    title: 'Multi-Tenant AI Content & Social Media Scheduler',
+    badge: 'Solo Project',
+    badgeColor: '#6366f1',
+    icon: FaShareAlt,
+    iconColor: '#6366f1',
+    description: 'A full-stack SaaS platform for agencies and content creators to generate, schedule, and automate social media posts across multiple platforms. Features multi-tenant architecture with strict data isolation, AI-generated captions and hashtags, and automated publishing.',
+    features: [
+      'Multi-tenant architecture & data isolation',
+      'AI caption & hashtag generation',
+      'Automated publishing with Celery & Redis',
+      'Editorial calendar & analytics dashboard',
+    ],
+    techStack: ['React.js', 'Django REST Framework', 'Python', 'MySQL', 'JWT Auth', 'OpenAI API', 'Celery', 'Redis', 'Chart.js'],
+    team: 'Solo',
+    publication: null,
   },
 ]
 
