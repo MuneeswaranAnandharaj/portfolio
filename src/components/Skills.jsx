@@ -1,68 +1,149 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { FaPython, FaHtml5, FaCss3Alt, FaBootstrap, FaAws } from 'react-icons/fa'
-import { SiDjango, SiPostgresql, SiMysql } from 'react-icons/si'
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import {
+  FaPython,
+  FaReact,
+  FaAws,
+  FaHtml5,
+  FaCss3Alt,
+  FaBootstrap,
+  FaGitAlt,
+  FaRobot,
+} from 'react-icons/fa'
+import {
+  SiDjango,
+  SiFastapi,
+  SiPostgresql,
+  SiMysql,
+  SiRedis,
+  SiTailwindcss,
+  SiRedux,
+  SiOpenai,
+} from 'react-icons/si'
+import { skillCategories, skillsData } from '../data/portfolioData'
 
-const skills = [
-  { name: 'Python', icon: FaPython, level: 85, color: '#3776AB' },
-  { name: 'HTML5', icon: FaHtml5, level: 90, color: '#E34F26' },
-  { name: 'CSS3', icon: FaCss3Alt, level: 85, color: '#1572B6' },
-  { name: 'SQL', icon: SiMysql, level: 80, color: '#4479A1' },
-  { name: 'Bootstrap', icon: FaBootstrap, level: 80, color: '#7952B3' },
-  { name: 'Django', icon: SiDjango, level: 75, color: '#092E20' },
-  { name: 'AWS', icon: FaAws, level: 65, color: '#FF9900' },
-  { name: 'PostgreSQL', icon: SiPostgresql, level: 70, color: '#336791' },
-]
+const iconMap = {
+  Python: FaPython,
+  'Django & DRF': SiDjango,
+  FastAPI: SiFastapi,
+  'Natural Language Processing': FaRobot,
+  'Machine Learning & BERT': FaRobot,
+  'OpenAI API & Generative AI': SiOpenai,
+  'React.js': FaReact,
+  'Redux Toolkit': SiRedux,
+  'HTML5 & Modern CSS3': FaHtml5,
+  'Tailwind CSS & Bootstrap': SiTailwindcss,
+  'AWS Cloud': FaAws,
+  'PostgreSQL & MySQL': SiPostgresql,
+  'Celery & Redis': SiRedis,
+  'Git & GitHub': FaGitAlt,
+}
 
 export default function Skills() {
+  const [activeCategory, setActiveCategory] = useState('All')
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  const filteredSkills =
+    activeCategory === 'All'
+      ? skillsData
+      : skillsData.filter((skill) => skill.category === activeCategory)
 
   return (
-    <section id="skills" className="skills" ref={ref}>
+    <section id="skills" className="skills-section" ref={ref}>
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          Technical Skills
-        </motion.h2>
+        {/* Section Header */}
+        <div className="section-header-wrap text-center">
+          <span className="section-pill">Technical Arsenal</span>
+          <h2 className="section-heading">
+            Tools & Technologies I Use to <span className="gradient-text">Build Production Software</span>
+          </h2>
+          <p className="section-subtitle">
+            Categorized overview of backend frameworks, AI/ML tools, frontend technologies, and cloud databases.
+          </p>
+        </div>
 
-        <div className="skills-grid">
-          {skills.map((skill, i) => (
-            <motion.div
-              key={skill.name}
-              className="skill-card"
-              initial={{ opacity: 0, y: 40, scale: 0.9 }}
-              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              whileHover={{ y: -10, scale: 1.02 }}
+        {/* Category Filter Tabs */}
+        <div className="skills-filter-tabs">
+          {skillCategories.map((cat) => (
+            <button
+              key={cat}
+              className={`filter-tab-btn ${activeCategory === cat ? 'active' : ''}`}
+              onClick={() => setActiveCategory(cat)}
             >
-              <motion.div
-                className="skill-icon-wrapper"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-              >
-                <skill.icon style={{ color: skill.color }} />
-              </motion.div>
-              <h3>{skill.name}</h3>
-              <div className="skill-bar-container">
-                <div className="skill-bar-bg">
-                  <motion.div
-                    className="skill-bar-fill"
-                    style={{ background: `linear-gradient(90deg, ${skill.color}, ${skill.color}88)` }}
-                    initial={{ width: 0 }}
-                    animate={inView ? { width: `${skill.level}%` } : {}}
-                    transition={{ duration: 1, delay: i * 0.1 + 0.3, ease: 'easeOut' }}
-                  />
-                </div>
-                <span className="skill-percentage">{skill.level}%</span>
-              </div>
-            </motion.div>
+              {cat}
+              {activeCategory === cat && (
+                <motion.div
+                  layoutId="skillFilterPill"
+                  className="filter-pill-active"
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                />
+              )}
+            </button>
           ))}
         </div>
+
+        {/* Skills Grid */}
+        <motion.div layout className="skills-cards-grid">
+          <AnimatePresence>
+            {filteredSkills.map((skill, index) => {
+              const Icon = iconMap[skill.name] || FaPython
+              return (
+                <motion.div
+                  layout
+                  key={skill.name}
+                  className="skill-card-modern"
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  transition={{ duration: 0.4, delay: index * 0.04 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                >
+                  <div className="skill-card-top">
+                    <div
+                      className="skill-icon-cube"
+                      style={{
+                        background: `linear-gradient(135deg, ${skill.color}22, ${skill.color}08)`,
+                        borderColor: `${skill.color}40`,
+                      }}
+                    >
+                      <Icon style={{ color: skill.color }} />
+                    </div>
+                    <div className="skill-badge-wrap">
+                      <span className={`proficiency-badge ${skill.proficiency.toLowerCase()}`}>
+                        {skill.proficiency}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="skill-card-body">
+                    <h4>{skill.name}</h4>
+                    <span className="skill-cat-tag">{skill.category}</span>
+                    <p className="skill-desc-text">{skill.description}</p>
+                  </div>
+
+                  <div className="skill-meter-wrap">
+                    <div className="meter-label-row">
+                      <span>Competency</span>
+                      <span>{skill.level}%</span>
+                    </div>
+                    <div className="meter-track">
+                      <motion.div
+                        className="meter-fill"
+                        style={{
+                          background: `linear-gradient(90deg, ${skill.color}, #a855f7)`,
+                        }}
+                        initial={{ width: 0 }}
+                        animate={inView ? { width: `${skill.level}%` } : {}}
+                        transition={{ duration: 0.8, delay: 0.2 + index * 0.04, ease: 'easeOut' }}
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   )

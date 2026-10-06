@@ -1,48 +1,90 @@
 import { motion } from 'framer-motion'
-import { FiMail } from 'react-icons/fi'
+import { FiMail, FiArrowUp, FiHeart } from 'react-icons/fi'
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
+import { personalInfo } from '../data/portfolioData'
 
 export default function Footer() {
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <footer className="footer">
-      <div className="container footer-content">
-        <div className="footer-left">
-          <span className="footer-logo">My Profile</span>
-          <p>&copy; {new Date().getFullYear()} Muneeswaran Anandharaj. All rights reserved.</p>
+    <footer className="footer-modern">
+      <div className="container">
+        <div className="footer-top-grid">
+          {/* Brand info */}
+          <div className="footer-brand-col">
+            <div className="footer-logo-row">
+              <span className="footer-monogram">{personalInfo.monogram}</span>
+              <span className="footer-brand-title">Muneeswaran.dev</span>
+            </div>
+            <p className="footer-tagline">
+              Engineering full-stack architectures, high-performance Python services, and intelligent AI solutions.
+            </p>
+          </div>
+
+          {/* Quick links */}
+          <div className="footer-nav-col">
+            <h4>Navigation</h4>
+            <div className="footer-links-list">
+              {['about', 'skills', 'projects', 'certifications', 'education', 'contact'].map(
+                (sec) => (
+                  <button
+                    key={sec}
+                    className="footer-nav-btn"
+                    onClick={() => scrollTo(sec)}
+                  >
+                    {sec.charAt(0).toUpperCase() + sec.slice(1)}
+                  </button>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Social connections */}
+          <div className="footer-social-col">
+            <h4>Connect</h4>
+            <div className="footer-social-row">
+              <a
+                href={personalInfo.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-btn"
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href={personalInfo.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-btn"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
+              <a
+                href={personalInfo.social.email}
+                className="footer-social-btn"
+                aria-label="Email"
+              >
+                <FiMail />
+              </a>
+            </div>
+            <p className="footer-available-note">
+              Based in {personalInfo.location} • {personalInfo.timezone}
+            </p>
+          </div>
         </div>
-        <div className="footer-social">
-          <motion.a
-            href="mailto:muneeswarananandharaj@gmail.com"
-            whileHover={{ y: -3, scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <FiMail />
-          </motion.a>
-          <motion.a
-            href="https://linkedin.com/in/muneeswaran-anandharaj"
-            target="_blank"
-            rel="noopener"
-            whileHover={{ y: -3, scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <FaLinkedinIn />
-          </motion.a>
-          <motion.a
-            href="https://github.com/MuneeswaranAnandharaj"
-            target="_blank"
-            rel="noopener"
-            whileHover={{ y: -3, scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <FaGithub />
-          </motion.a>
-          <motion.a
-            href="tel:+919344272624"
-            whileHover={{ y: -3, scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-          </motion.a>
+
+        {/* Bottom divider & copyright */}
+        <div className="footer-bottom-bar">
+          <p className="copyright-text">
+            &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+          </p>
+          <p className="footer-built-with">
+            Built with React, Framer Motion & Vite
+          </p>
         </div>
       </div>
     </footer>

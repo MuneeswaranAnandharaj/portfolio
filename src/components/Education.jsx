@@ -1,69 +1,74 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-
-const education = [
-  {
-    year: '2025',
-    degree: 'B.E. Computer Science and Engineering',
-    institution: 'AAA College of Engineering & Technology',
-    detail: 'CGPA: 7.0 (up to 8th semester)',
-  },
-  {
-    year: '2021',
-    degree: 'Higher Secondary Certificate (HSC)',
-    institution: 'S.B.K Hr. Sec. School',
-    detail: 'Percentage: 83%',
-  },
-  {
-    year: '2019',
-    degree: 'Secondary School Leaving Certificate (SSLC)',
-    institution: 'S.B.K Hr. Sec. School',
-    detail: 'Percentage: 74.8%',
-  },
-]
+import { FiBookOpen, FiCalendar, FiAward, FiCheckCircle } from 'react-icons/fi'
+import { educationData } from '../data/portfolioData'
 
 export default function Education() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="education" className="education" ref={ref}>
+    <section id="education" className="education-section" ref={ref}>
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          Education
-        </motion.h2>
+        {/* Section Header */}
+        <div className="section-header-wrap text-center">
+          <span className="section-pill">Academic Background</span>
+          <h2 className="section-heading">
+            Education & <span className="gradient-text">Foundational Learning</span>
+          </h2>
+          <p className="section-subtitle">
+            Formal training in Computer Science & Engineering, core algorithms, and foundational sciences.
+          </p>
+        </div>
 
-        <div className="timeline">
-          {education.map((edu, i) => (
-            <motion.div
-              key={edu.year}
-              className="timeline-item"
-              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-            >
+        {/* Education Timeline */}
+        <div className="education-timeline-modern">
+          <div className="timeline-spine-line" />
+
+          {educationData.map((edu, idx) => {
+            const isEven = idx % 2 === 0
+
+            return (
               <motion.div
-                className="timeline-dot"
-                initial={{ scale: 0 }}
-                animate={inView ? { scale: 1 } : {}}
-                transition={{ delay: i * 0.2 + 0.3, type: 'spring' }}
-              />
-              <motion.div
-                className="timeline-card"
-                whileHover={{ scale: 1.02 }}
+                key={edu.degree}
+                className={`timeline-entry-row ${isEven ? 'left-entry' : 'right-entry'}`}
+                initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
               >
-                <span className="timeline-year">{edu.year}</span>
-                <h3>{edu.degree}</h3>
-                <p className="timeline-institution">{edu.institution}</p>
-                <p className="timeline-detail">{edu.detail}</p>
+                {/* Timeline Center Node */}
+                <div className="timeline-node-center">
+                  <div className="node-outer-glow" />
+                  <div className="node-inner-dot">
+                    <FiBookOpen className="node-icon" />
+                  </div>
+                </div>
+
+                {/* Timeline Card */}
+                <div className="timeline-entry-card">
+                  <div className="timeline-card-header">
+                    <div className="period-pill">
+                      <FiCalendar />
+                      <span>{edu.period}</span>
+                    </div>
+                    <span className="grade-badge">{edu.score}</span>
+                  </div>
+
+                  <h3 className="timeline-degree-title">{edu.degree}</h3>
+                  <p className="timeline-institution-name">{edu.institution}</p>
+
+                  <div className="timeline-highlights-list">
+                    {edu.highlights.map((item, hIdx) => (
+                      <div key={hIdx} className="timeline-highlight-point">
+                        <FiCheckCircle className="point-icon" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
-            </motion.div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

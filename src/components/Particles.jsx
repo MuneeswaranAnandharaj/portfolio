@@ -22,7 +22,13 @@ export default function Particles() {
       mouse.x = e.clientX
       mouse.y = e.clientY
     }
-    window.addEventListener('mousemove', onMouse)
+    const onMouseLeave = () => {
+      mouse.x = null
+      mouse.y = null
+    }
+
+    window.addEventListener('mousemove', onMouse, { passive: true })
+    window.addEventListener('mouseleave', onMouseLeave)
 
     class Particle {
       constructor() {
@@ -31,10 +37,10 @@ export default function Particles() {
       reset() {
         this.x = Math.random() * canvas.width
         this.y = Math.random() * canvas.height
-        this.size = Math.random() * 2 + 0.5
-        this.speedX = (Math.random() - 0.5) * 0.5
-        this.speedY = (Math.random() - 0.5) * 0.5
-        this.opacity = Math.random() * 0.5 + 0.1
+        this.size = Math.random() * 1.8 + 0.6
+        this.speedX = (Math.random() - 0.5) * 0.4
+        this.speedY = (Math.random() - 0.5) * 0.4
+        this.opacity = Math.random() * 0.4 + 0.1
       }
       update() {
         this.x += this.speedX
@@ -44,9 +50,9 @@ export default function Particles() {
           const dx = mouse.x - this.x
           const dy = mouse.y - this.y
           const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 120) {
-            this.x -= dx * 0.02
-            this.y -= dy * 0.02
+          if (dist < 100) {
+            this.x -= dx * 0.015
+            this.y -= dy * 0.015
           }
         }
 
@@ -62,7 +68,8 @@ export default function Particles() {
       }
     }
 
-    const count = Math.min(80, Math.floor(window.innerWidth * 0.05))
+    // Limit count for optimal 60fps performance
+    const count = Math.min(65, Math.floor(window.innerWidth * 0.04))
     for (let i = 0; i < count; i++) {
       particles.push(new Particle())
     }
@@ -73,10 +80,10 @@ export default function Particles() {
           const dx = particles[i].x - particles[j].x
           const dy = particles[i].y - particles[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 150) {
+          if (dist < 120) {
             ctx.beginPath()
-            ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - dist / 150)})`
-            ctx.lineWidth = 0.5
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.08 * (1 - dist / 120)})`
+            ctx.lineWidth = 0.6
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
             ctx.stroke()
@@ -87,7 +94,10 @@ export default function Particles() {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      particles.forEach(p => { p.update(); p.draw() })
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update()
+        particles[i].draw()
+      }
       connectParticles()
       animId = requestAnimationFrame(animate)
     }
@@ -97,6 +107,7 @@ export default function Particles() {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', onMouse)
+      window.removeEventListener('mouseleave', onMouseLeave)
     }
   }, [])
 

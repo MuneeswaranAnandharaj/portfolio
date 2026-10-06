@@ -1,181 +1,162 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { FiUsers, FiAward, FiExternalLink, FiCalendar, FiTool } from 'react-icons/fi'
-import { FaCar, FaPython, FaReact, FaShareAlt } from 'react-icons/fa'
-import { SiDjango } from 'react-icons/si'
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { FiAward, FiCheckCircle, FiExternalLink, FiGithub, FiLayers, FiMaximize2 } from 'react-icons/fi'
+import { FaRobot, FaShareAlt, FaCar, FaTools } from 'react-icons/fa'
+import { projectCategories, projectsData } from '../data/portfolioData'
+import ProjectModal from './ProjectModal'
 
-const projects = [
-  {
-    title: 'Car Rental Management System',
-    badge: 'Solo Project',
-    badgeColor: '#22c55e',
-    icon: FaCar,
-    iconColor: '#22c55e',
-    description: 'A full-stack car rental platform built with React and Django. Users can browse available vehicles, make reservations, manage bookings, and process payments. Features an admin dashboard for fleet management, booking analytics, and customer management.',
-    features: [
-      'Car inventory management & real-time availability',
-      'Online booking & reservation system',
-      'User authentication & profile management',
-      'Admin analytics dashboard',
-    ],
-    techStack: ['React', 'Django', 'Django REST Framework', 'MySQL', 'Bootstrap', 'JWT Auth', 'Stripe Payments'],
-    team: 'Solo',
-    publication: null,
-  },
-  {
-    title: 'AI Based Petition Monitoring System',
-    badge: 'Featured',
-    badgeColor: null,
-    icon: FaPython,
-    iconColor: null,
-    description: 'An NLP-powered system designed to monitor and analyze online petitions using advanced sentiment analysis, keyword extraction, and fraud detection capabilities. This AI-driven solution automates petition categorization, trend detection, and prioritization.',
-    features: [
-      'Automated petition categorization',
-      'Trend detection & prioritization',
-      'Fast response & high transparency',
-      'Optimized resource allocation',
-    ],
-    techStack: ['NLP', 'spaCy', 'SVM', 'BERT', 'VADER', 'LSTM', 'XGBoost', 'Random Forest', 'FastAPI', 'JWT Auth', 'Tailwind CSS', 'PostgreSQL'],
-    team: 'Team of 2',
-    publication: 'Published in IJIRT, Vol 11, May 2025',
-  },
-  {
-    title: 'Multi-Tenant AI Content & Social Media Scheduler',
-    badge: 'Solo Project',
-    badgeColor: '#6366f1',
-    icon: FaShareAlt,
-    iconColor: '#6366f1',
-    description: 'A full-stack SaaS platform for agencies and content creators to generate, schedule, and automate social media posts across multiple platforms. Features multi-tenant architecture with strict data isolation, AI-generated captions and hashtags, and automated publishing.',
-    features: [
-      'Multi-tenant architecture & data isolation',
-      'AI caption & hashtag generation',
-      'Automated publishing with Celery & Redis',
-      'Editorial calendar & analytics dashboard',
-    ],
-    techStack: ['React.js', 'Django REST Framework', 'Python', 'MySQL', 'JWT Auth', 'OpenAI API', 'Celery', 'Redis', 'Chart.js'],
-    team: 'Solo',
-    publication: null,
-  },
-  {
-    title: 'Customer Feedback & Feature Request Board',
-    badge: 'Solo Project',
-    badgeColor: '#f59e0b',
-    icon: FiTool,
-    iconColor: '#f59e0b',
-    description: 'A public and internal product feedback tool where software teams can collect feature requests, allow users to upvote ideas, and publish public product roadmaps. Features interactive upvote mechanics, status filtering, and drag-and-drop roadmap columns for product managers.',
-    features: [
-      'Interactive upvote mechanics',
-      'Search & filter by status',
-      'Drag-and-drop roadmap columns',
-      'Votes, comment threads & notifications',
-    ],
-    techStack: ['React.js', 'Redux Toolkit', 'Context API', 'Tailwind CSS', 'Django', 'Django REST Framework', 'Django ORM', 'MySQL', 'Python', 'SimpleJWT', 'Postman'],
-    team: 'Solo',
-    publication: null,
-  },
-]
+const projectIconMap = {
+  'petition-ai': FaRobot,
+  'saas-scheduler': FaShareAlt,
+  'car-rental': FaCar,
+  'feedback-board': FaTools,
+}
 
 export default function Projects() {
+  const [activeCategory, setActiveCategory] = useState('All')
+  const [selectedProject, setSelectedProject] = useState(null)
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  const filteredProjects =
+    activeCategory === 'All'
+      ? projectsData
+      : projectsData.filter((p) => p.category === activeCategory)
 
   return (
-    <section id="projects" className="projects" ref={ref}>
+    <section id="projects" className="projects-section" ref={ref}>
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          Projects
-        </motion.h2>
+        {/* Section Header */}
+        <div className="section-header-wrap text-center">
+          <span className="section-pill">Featured Work</span>
+          <h2 className="section-heading">
+            Production Systems & <span className="gradient-text">Applied Engineering</span>
+          </h2>
+          <p className="section-subtitle">
+            Explore full-stack platforms, asynchronous SaaS engines, and peer-reviewed AI research.
+          </p>
+        </div>
 
-        <div className="projects-grid">
-          {projects.map((project, idx) => (
-            <motion.div
-              key={project.title}
-              className="project-card-wrapper"
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 + idx * 0.15 }}
+        {/* Project Category Filters */}
+        <div className="projects-filter-tabs">
+          {projectCategories.map((cat) => (
+            <button
+              key={cat}
+              className={`filter-tab-btn ${activeCategory === cat ? 'active' : ''}`}
+              onClick={() => setActiveCategory(cat)}
             >
-              <motion.div
-                className="project-card"
-                whileHover={{ y: -5 }}
-              >
-                <div className="project-glow" style={project.badgeColor ? undefined : { opacity: 0.5 }} />
-                <div className="project-content">
-                  <div className="project-header">
-                    <span
-                      className="project-badge"
-                      style={project.badgeColor ? { background: project.badgeColor } : undefined}
-                    >
-                      {project.badge}
-                    </span>
-                    <motion.div
-                      className="project-icon"
-                      whileHover={{ rotate: 15 }}
-                      style={project.iconColor ? { color: project.iconColor } : undefined}
-                    >
-                      <project.icon />
-                    </motion.div>
+              {cat}
+              {activeCategory === cat && (
+                <motion.div
+                  layoutId="projectFilterPill"
+                  className="filter-pill-active"
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Projects Grid */}
+        <motion.div layout className="projects-cards-grid">
+          <AnimatePresence>
+            {filteredProjects.map((project, idx) => {
+              const Icon = projectIconMap[project.id] || FaRobot
+
+              return (
+                <motion.article
+                  layout
+                  key={project.id}
+                  className="project-card-premium"
+                  initial={{ opacity: 0, y: 35 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                >
+                  {/* Glowing corner gradient */}
+                  <div
+                    className="project-corner-glow"
+                    style={{
+                      background: `radial-gradient(circle at top right, ${project.accentColor}33, transparent 70%)`,
+                    }}
+                  />
+
+                  {/* Header Row */}
+                  <div className="project-top-row">
+                    <div className="project-icon-box" style={{ borderColor: `${project.accentColor}44` }}>
+                      <Icon style={{ color: project.accentColor }} />
+                    </div>
+
+                    <div className="project-badges-row">
+                      <span className={`project-badge ${project.badgeType}`}>
+                        {project.badge}
+                      </span>
+                    </div>
                   </div>
 
-                  <h3>{project.title}</h3>
-                  <p className="project-desc">{project.description}</p>
+                  {/* Academic paper banner */}
+                  {project.publication && (
+                    <div className="project-pub-banner">
+                      <FiAward className="pub-badge-icon" />
+                      <span>{project.publication}</span>
+                    </div>
+                  )}
 
-                  <div className="project-features-grid">
-                    {project.features.map((f, i) => (
-                      <motion.div
-                        key={i}
-                        className="project-feature"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: 0.4 + idx * 0.1 + i * 0.1 }}
-                      >
-                        <FiCalendar />
-                        <span>{f}</span>
-                      </motion.div>
+                  {/* Title & Tagline */}
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-tagline-text">{project.tagline}</p>
+                  <p className="project-body-desc">{project.description}</p>
+
+                  {/* Highlight Features */}
+                  <div className="project-features-list">
+                    {project.features.slice(0, 3).map((feat, fIdx) => (
+                      <div key={fIdx} className="feature-line">
+                        <FiCheckCircle className="feat-check" style={{ color: project.accentColor }} />
+                        <span>{feat}</span>
+                      </div>
                     ))}
                   </div>
 
-                  <div className="project-tech-stack">
-                    <h4>Technologies Used</h4>
-                    <div className="tech-tags">
-                      {project.techStack.map((tech, i) => (
-                        <motion.span
-                          key={tech}
-                          className="tech-tag"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={inView ? { opacity: 1, scale: 1 } : {}}
-                          transition={{ delay: 0.6 + idx * 0.05 + i * 0.05 }}
-                          whileHover={{ scale: 1.1, y: -2 }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
+                  {/* Tech stack chips */}
+                  <div className="project-stack-wrap">
+                    {project.techStack.map((tech) => (
+                      <span key={tech} className="tech-tag">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
 
-                  <div className="project-meta-row">
-                    <div className="project-meta-item">
-                      <FiUsers />
-                      <span>{project.team}</span>
-                    </div>
-                    {project.publication && (
-                      <div className="project-meta-item publication">
-                        <FiAward />
-                        <span>{project.publication}</span>
-                      </div>
-                    )}
+                  {/* Action buttons */}
+                  <div className="project-footer-actions">
+                    <button
+                      className="btn btn-secondary btn-sm"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      <FiMaximize2 /> View Architecture
+                    </button>
+
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline btn-sm"
+                      title="View GitHub Repository"
+                    >
+                      <FiGithub /> Repository
+                    </a>
                   </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+                </motion.article>
+              )
+            })}
+          </AnimatePresence>
+        </motion.div>
       </div>
+
+      {/* In-depth Project Details Modal */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   )
 }

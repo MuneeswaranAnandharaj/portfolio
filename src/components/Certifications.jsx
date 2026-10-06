@@ -1,85 +1,93 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FaAws, FaPython, FaRobot } from 'react-icons/fa'
-import { FiCalendar } from 'react-icons/fi'
+import { FiCalendar, FiCheck, FiAward, FiShield } from 'react-icons/fi'
+import { certificationsData } from '../data/portfolioData'
 
-const certifications = [
-  {
-    title: 'Full Stack Python Developer',
-    institution: 'Certification Program',
-    date: 'November 20, 2026 - March 20, 2026',
-    icon: FaPython,
-    color: '#3776AB',
-  },
-  {
-    title: 'AWS Cloud Architecting',
-    institution: 'AWS Academy',
-    date: 'Issued on March 8, 2024',
-    icon: FaAws,
-    color: '#FF9900',
-  },
-  {
-    title: 'AI Full Stack Developer',
-    institution: 'Certification Program',
-    date: 'January 2026 - March 2026',
-    icon: FaRobot,
-    color: '#06B6D4',
-  },
-]
+const certIconMap = {
+  aws: FaAws,
+  python: FaPython,
+  ai: FaRobot,
+}
 
 export default function Certifications() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="certifications" className="certifications" ref={ref}>
+    <section id="certifications" className="certifications-section" ref={ref}>
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          Certifications
-        </motion.h2>
+        {/* Section Header */}
+        <div className="section-header-wrap text-center">
+          <span className="section-pill">Credentials & Validation</span>
+          <h2 className="section-heading">
+            Professional <span className="gradient-text">Certifications</span>
+          </h2>
+          <p className="section-subtitle">
+            Industry-standard certifications validating expertise across cloud architecture, full-stack Python, and AI systems.
+          </p>
+        </div>
 
-        <div className="certs-grid">
-          {certifications.map((cert, i) => (
-            <motion.div
-              key={cert.title}
-              className="cert-card-wrapper"
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
-            >
+        {/* Certifications Grid */}
+        <div className="certifications-grid">
+          {certificationsData.map((cert, idx) => {
+            const Icon = certIconMap[cert.iconType] || FaAward
+
+            return (
               <motion.div
-                className="cert-card"
-                whileHover={{ y: -8, scale: 1.02 }}
+                key={cert.title}
+                className="cert-card-modern"
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: idx * 0.12 }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
               >
-                <div className="cert-glow" style={{
-                  background: `radial-gradient(circle, ${cert.color}22, transparent 70%)`
-                }} />
-                <motion.div
-                  className="cert-icon-wrapper"
+                {/* Ambient glow in card background */}
+                <div
+                  className="cert-card-ambient"
                   style={{
-                    background: `linear-gradient(135deg, ${cert.color}33, ${cert.color}08)`
+                    background: `radial-gradient(circle at top right, ${cert.color}25, transparent 70%)`,
                   }}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <cert.icon style={{ color: cert.color }} />
-                </motion.div>
-                <div className="cert-info">
-                  <h3>{cert.title}</h3>
-                  <p className="cert-institution">{cert.institution}</p>
-                  <div className="cert-date">
-                    <FiCalendar />
+                />
+
+                <div className="cert-card-header">
+                  <div
+                    className="cert-icon-frame"
+                    style={{
+                      background: `linear-gradient(135deg, ${cert.color}22, ${cert.color}0a)`,
+                      borderColor: `${cert.color}44`,
+                    }}
+                  >
+                    <Icon style={{ color: cert.color }} />
+                  </div>
+
+                  <span className="cert-status-badge">
+                    <FiShield className="status-shield" />
+                    <span>{cert.status}</span>
+                  </span>
+                </div>
+
+                <div className="cert-card-content">
+                  <h3 className="cert-title">{cert.title}</h3>
+                  <p className="cert-issuer">{cert.issuer}</p>
+
+                  <div className="cert-timeline-row">
+                    <FiCalendar className="calendar-icon" />
                     <span>{cert.date}</span>
+                  </div>
+
+                  <p className="cert-description">{cert.description}</p>
+                </div>
+
+                <div className="cert-card-footer">
+                  <div className="cert-verified-pill">
+                    <FiCheck />
+                    <span>Skills Verified & Assessed</span>
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

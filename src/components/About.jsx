@@ -1,95 +1,172 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { FiAward, FiBookOpen, FiMapPin, FiGlobe, FiCode, FiCpu, FiServer, FiCheck } from 'react-icons/fi'
+import { personalInfo } from '../data/portfolioData'
 
 export default function About() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
-  const stats = [
-    { label: 'Projects', value: '4+' },
-    { label: 'Technologies', value: '10+' },
-    { label: 'CGPA', value: '7.0' },
-    { label: 'HSC %', value: '83%' },
+  const valuePillars = [
+    {
+      icon: FiServer,
+      title: 'Scalable Backends',
+      desc: 'Architecting robust RESTful microservices, JWT authentication, and ORM schemas with Django & FastAPI.',
+    },
+    {
+      icon: FiCpu,
+      title: 'Applied AI & NLP',
+      desc: 'Developing practical NLP pipelines, BERT classifiers, sentiment scoring, and Generative AI integrations.',
+    },
+    {
+      icon: FiCode,
+      title: 'Full-Stack SPAs',
+      desc: 'Building responsive, reactive user interfaces with modern React, Redux Toolkit, and Tailwind CSS.',
+    },
   ]
 
   return (
-    <section id="about" className="about" ref={ref}>
+    <section id="about" className="about-section" ref={ref}>
       <div className="container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          About Me
-        </motion.h2>
+        {/* Section Header */}
+        <div className="section-header-wrap text-center">
+          <span className="section-pill">About Me</span>
+          <h2 className="section-heading">
+            Engineering High-Performance Solutions with <span className="gradient-text">Precision & Innovation</span>
+          </h2>
+          <p className="section-subtitle">
+            A look into my engineering background, technical philosophy, and published research.
+          </p>
+        </div>
 
-        <div className="about-grid">
+        {/* Bento Grid */}
+        <div className="about-bento-grid">
+          {/* Card 1: Main Story */}
           <motion.div
-            className="about-text"
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bento-card bento-story"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
           >
-            <p>
-              I'm a passionate <span className="highlight">Software Developer</span> with a strong
-              foundation in analytics, problem-solving, and emerging technologies. My goal is to drive
-              impactful and transformative projects that contribute to industry growth while continuously
-              expanding my expertise.
-            </p>
-            <p>
-              I graduated with a degree in <span className="highlight">Computer Science and Engineering</span>,
-              where I developed hands-on experience in web development, AI/ML, and cloud technologies.
-              I'm dedicated to continuous learning and staying at the forefront of technological innovation.
-            </p>
+            <div className="bento-card-header">
+              <span className="card-badge">Biography</span>
+              <h3>Building with Intent & Rigor</h3>
+            </div>
+            <div className="bento-story-body">
+              <p>
+                I am a <strong>Software Developer</strong> holding a degree in{' '}
+                <strong>Computer Science & Engineering</strong>. My work focuses on solving complex
+                computational and product problems through clean software architecture, data modeling,
+                and applied artificial intelligence.
+              </p>
+              <p>
+                From architecting multi-tenant SaaS platforms with asynchronous Celery queues to implementing
+                BERT-driven NLP classification models, I build systems engineered for reliability, speed, and real user value.
+              </p>
+            </div>
+
+            <div className="story-highlights-list">
+              <div className="story-highlight-item">
+                <FiCheck className="highlight-check" />
+                <span>Specialized in Python ecosystem (Django, FastAPI, Celery, NumPy)</span>
+              </div>
+              <div className="story-highlight-item">
+                <FiCheck className="highlight-check" />
+                <span>Hands-on cloud orchestration with AWS Academy certification</span>
+              </div>
+              <div className="story-highlight-item">
+                <FiCheck className="highlight-check" />
+                <span>Production experience connecting React frontend with secure REST APIs</span>
+              </div>
+            </div>
           </motion.div>
 
+          {/* Card 2: Research Spotlight Card */}
           <motion.div
-            className="about-stats"
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bento-card bento-research"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
           >
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                className="stat-card"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.3 + i * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <span className="stat-value">{stat.value}</span>
-                <span className="stat-label">{stat.label}</span>
-              </motion.div>
-            ))}
+            <div className="research-badge-row">
+              <span className="card-badge gold">Peer-Reviewed Paper</span>
+              <span className="paper-year">May 2025</span>
+            </div>
+            <div className="research-content">
+              <FiAward className="research-trophy" />
+              <h4>AI-Based Petition Monitoring System</h4>
+              <p className="research-journal">
+                Published in <em>International Journal of Innovative Research in Technology (IJIRT)</em>, Volume 11.
+              </p>
+              <p className="research-abstract">
+                Authored peer-reviewed research analyzing automated civic petition classification,
+                fraud identification, and public sentiment extraction using spaCy, BERT, and ensemble machine learning models.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 3: Quick Facts & Specs */}
+          <motion.div
+            className="bento-card bento-facts"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            <div className="bento-card-header">
+              <span className="card-badge">Quick Specs</span>
+              <h3>At a Glance</h3>
+            </div>
+            <div className="facts-list">
+              <div className="fact-item">
+                <FiMapPin className="fact-icon" />
+                <div>
+                  <span className="fact-label">Location</span>
+                  <span className="fact-value">{personalInfo.location}</span>
+                </div>
+              </div>
+              <div className="fact-item">
+                <FiGlobe className="fact-icon" />
+                <div>
+                  <span className="fact-label">Timezone</span>
+                  <span className="fact-value">{personalInfo.timezone}</span>
+                </div>
+              </div>
+              <div className="fact-item">
+                <FiBookOpen className="fact-icon" />
+                <div>
+                  <span className="fact-label">Education</span>
+                  <span className="fact-value">B.E. Computer Science (CGPA: 7.0)</span>
+                </div>
+              </div>
+              <div className="fact-item">
+                <FiCode className="fact-icon" />
+                <div>
+                  <span className="fact-label">Languages</span>
+                  <span className="fact-value">English (Professional), Tamil (Native)</span>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
 
-        <motion.div
-          className="about-info-grid"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <div className="info-card">
-            <h4>Name</h4>
-            <p>Muneeswaran Anandharaj</p>
-          </div>
-          <div className="info-card">
-            <h4>Email</h4>
-            <p>muneeswarananandharaj@gmail.com</p>
-          </div>
-          <div className="info-card">
-            <h4>Location</h4>
-            <p>Madurai, India</p>
-          </div>
-          <div className="info-card">
-            <h4>Languages</h4>
-            <p>English, Tamil</p>
-          </div>
-        </motion.div>
+        {/* Engineering Pillars Row */}
+        <div className="about-pillars-grid">
+          {valuePillars.map((pillar, idx) => (
+            <motion.div
+              key={pillar.title}
+              className="pillar-card"
+              initial={{ opacity: 0, y: 25 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.35 + idx * 0.1 }}
+            >
+              <div className="pillar-icon-box">
+                <pillar.icon />
+              </div>
+              <h4>{pillar.title}</h4>
+              <p>{pillar.desc}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )
