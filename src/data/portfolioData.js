@@ -2,6 +2,7 @@ export const personalInfo = {
   name: 'Muneeswaran Anandharaj',
   displayName: 'Muneeswaran A.',
   monogram: 'MA',
+  avatarUrl: '/profile.jpg',
   title: 'Full-Stack & AI/ML Software Developer',
   headline: 'Building Intelligent AI Systems & Scalable Full-Stack Applications',
   location: 'Madurai, Tamil Nadu, India',

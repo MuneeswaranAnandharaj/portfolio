@@ -1,6 +1,17 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { FiAward, FiBookOpen, FiMapPin, FiGlobe, FiCode, FiCpu, FiServer, FiCheck } from 'react-icons/fi'
+import {
+  FiAward,
+  FiBookOpen,
+  FiMapPin,
+  FiGlobe,
+  FiCode,
+  FiCpu,
+  FiServer,
+  FiCheck,
+  FiDownload,
+  FiMail,
+} from 'react-icons/fi'
 import { personalInfo } from '../data/portfolioData'
 
 export default function About() {
@@ -41,12 +52,46 @@ export default function About() {
 
         {/* Bento Grid */}
         <div className="about-bento-grid">
-          {/* Card 1: Main Story */}
+          {/* Card 1: Visual Portrait Card */}
+          <motion.div
+            className="bento-card bento-portrait"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="bento-portrait-frame">
+              <img
+                src={personalInfo.avatarUrl}
+                alt={personalInfo.name}
+                className="bento-portrait-img"
+              />
+              <div className="bento-portrait-overlay" />
+              <div className="bento-portrait-info">
+                <span className="portrait-role-badge">Software Developer</span>
+                <h3>{personalInfo.name}</h3>
+                <p className="portrait-location">
+                  <FiMapPin /> {personalInfo.location}
+                </p>
+              </div>
+            </div>
+
+            <div className="bento-portrait-actions">
+              <a
+                href={personalInfo.resumeUrl}
+                download={personalInfo.resumeFilename}
+                className="btn btn-secondary btn-sm full-width"
+              >
+                <FiDownload /> Download Resume (CV)
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Card 2: Main Story */}
           <motion.div
             className="bento-card bento-story"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="bento-card-header">
               <span className="card-badge">Biography</span>
@@ -81,12 +126,12 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Card 2: Research Spotlight Card */}
+          {/* Card 3: Research Spotlight Card */}
           <motion.div
             className="bento-card bento-research"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="research-badge-row">
               <span className="card-badge gold">Peer-Reviewed Paper</span>
@@ -105,12 +150,12 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Card 3: Quick Facts & Specs */}
+          {/* Card 4: Quick Facts & Specs */}
           <motion.div
             className="bento-card bento-facts"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.25 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="bento-card-header">
               <span className="card-badge">Quick Specs</span>

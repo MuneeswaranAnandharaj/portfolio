@@ -84,8 +84,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          {/* Availability Badge */}
+          {/* Availability Badge with Avatar */}
           <div className="hero-badge-pill">
+            <img
+              src={personalInfo.avatarUrl}
+              alt={personalInfo.name}
+              className="hero-badge-avatar"
+            />
             <span className="beacon-indicator">
               <span className="beacon-core" />
               <span className="beacon-wave" />
@@ -176,13 +181,63 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Column: Interactive Terminal Preview */}
+        {/* Right Column: Profile Showcase & Terminal */}
         <motion.div
           className="hero-code-showcase"
           initial={{ opacity: 0, scale: 0.95, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
+          {/* Hero Profile Photo Card with Floating Badges */}
+          <div className="hero-avatar-showcase">
+            <div className="avatar-ambient-glow" />
+
+            <div className="hero-avatar-card">
+              <div className="hero-avatar-image-frame">
+                <img
+                  src={personalInfo.avatarUrl}
+                  alt={personalInfo.name}
+                  className="hero-avatar-main-img"
+                />
+                <div className="hero-avatar-overlay" />
+                <div className="hero-avatar-caption">
+                  <span className="caption-name">{personalInfo.name}</span>
+                  <span className="caption-sub">Full-Stack & AI/ML Developer</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Badges */}
+            <motion.div
+              className="hero-floating-chip chip-left"
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <div className="chip-icon-box python">
+                <FaPython />
+              </div>
+              <div className="chip-text">
+                <strong>Full-Stack & AI</strong>
+                <span>Python • Django • React</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="hero-floating-chip chip-right"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            >
+              <div className="chip-icon-box gold">
+                <FiAward />
+              </div>
+              <div className="chip-text">
+                <strong>IJIRT Published</strong>
+                <span>NLP & BERT Research</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Interactive Code Terminal */}
           <div className="terminal-window">
             <div className="terminal-header">
               <div className="terminal-controls">
@@ -241,25 +296,6 @@ export default function Hero() {
               </div>
               <div className="tech-badge-mini">
                 <FaAws /> AWS
-              </div>
-            </div>
-          </div>
-
-          {/* Quick Floating Spotlight Cards */}
-          <div className="hero-spotlight-cards">
-            <div className="spotlight-card">
-              <FiAward className="spotlight-icon gold" />
-              <div>
-                <strong>IJIRT Published</strong>
-                <p>AI Petition Monitoring Research</p>
-              </div>
-            </div>
-
-            <div className="spotlight-card">
-              <FiLayers className="spotlight-icon cyan" />
-              <div>
-                <strong>AWS Academy</strong>
-                <p>Cloud Architecting Certified</p>
               </div>
             </div>
           </div>

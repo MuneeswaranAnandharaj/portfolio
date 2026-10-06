@@ -57,8 +57,9 @@ export default function Navbar() {
             scrollTo('hero')
           }}
         >
-          <div className="brand-badge">
-            <span>{personalInfo.monogram}</span>
+          <div className="brand-avatar-frame">
+            <img src={personalInfo.avatarUrl} alt={personalInfo.name} className="brand-avatar-img" />
+            <span className="brand-avatar-dot" />
           </div>
           <div className="brand-text">
             <span className="brand-name">Muneeswaran</span>
@@ -139,8 +140,8 @@ export default function Navbar() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="mobile-drawer-top">
-                <div className="brand-badge small">
-                  <span>{personalInfo.monogram}</span>
+                <div className="brand-avatar-frame small">
+                  <img src={personalInfo.avatarUrl} alt={personalInfo.name} className="brand-avatar-img" />
                 </div>
                 <button
                   className="mobile-close-btn"
