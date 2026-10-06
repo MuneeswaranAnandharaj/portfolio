@@ -1,46 +1,49 @@
 /* ==========================================================================
    MUNEESWARAN ANANDHARAJ — PORTFOLIO DESIGN SYSTEM 2026
-   Theme: Obsidian Cyber Glassmorphism
+   Theme: Minimalist Stealth (Deep Slate, Icy Blue & Subtle Glass)
    ========================================================================== */
 
 :root {
-  /* Core Colors */
-  --bg-deep: #08090f;
-  --bg-surface: #0d101a;
-  --bg-card: rgba(16, 20, 32, 0.72);
-  --bg-card-hover: rgba(22, 28, 46, 0.88);
-  --bg-card-solid: #111522;
+  /* Core Colors (Deep Slate Monochrome) */
+  --bg-deep: #07090e;
+  --bg-surface: #0b0f17;
+  --bg-card: rgba(14, 19, 29, 0.75);
+  --bg-card-hover: rgba(20, 27, 42, 0.9);
+  --bg-card-solid: #0d121c;
   --bg-glass: rgba(255, 255, 255, 0.03);
 
   /* Text Colors */
   --text-white: #ffffff;
-  --text-primary: #f1f5f9;
+  --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-dim: #475569;
 
-  /* Accent Colors */
-  --accent-indigo: #6366f1;
-  --accent-purple: #8b5cf6;
-  --accent-cyan: #06b6d4;
+  /* Accent Colors (Minimalist Stealth - Crisp Icy Blue & Electric Cobalt) */
+  --accent-cyan: #38bdf8;
+  --accent-ice: #7dd3fc;
+  --accent-blue: #0284c7;
+  --accent-indigo: #38bdf8;
+  --accent-purple: #60a5fa;
   --accent-emerald: #10b981;
   --accent-amber: #f59e0b;
   --accent-rose: #f43f5e;
+  --accent-silver: #cbd5e1;
 
   /* Gradients */
-  --grad-brand: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
-  --grad-accent-btn: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  --grad-glow: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, transparent 70%);
-  --grad-text: linear-gradient(135deg, #ffffff 20%, #cbd5e1 70%, #94a3b8 100%);
+  --grad-brand: linear-gradient(135deg, #ffffff 10%, #7dd3fc 50%, #0284c7 100%);
+  --grad-accent-btn: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+  --grad-glow: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, transparent 70%);
+  --grad-text: linear-gradient(135deg, #ffffff 20%, #e2e8f0 70%, #94a3b8 100%);
   --grad-gold: linear-gradient(135deg, #f59e0b, #fbbf24);
 
   /* Borders & Shadows */
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(255, 255, 255, 0.15);
-  --border-active: rgba(99, 102, 241, 0.45);
-  --shadow-card: 0 16px 36px -12px rgba(0, 0, 0, 0.55);
-  --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.25);
-  --shadow-cyan-glow: 0 0 25px rgba(6, 182, 212, 0.25);
+  --border-highlight: rgba(255, 255, 255, 0.16);
+  --border-active: rgba(56, 189, 248, 0.45);
+  --shadow-card: 0 16px 36px -12px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.25);
+  --shadow-cyan-glow: 0 0 25px rgba(56, 189, 248, 0.25);
 
   /* Typography */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -323,7 +326,7 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -331,7 +334,7 @@ body {
   font-size: 0.85rem;
   color: #ffffff;
   letter-spacing: -0.05em;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.35);
 }
 
 .brand-badge.small {
@@ -346,8 +349,8 @@ body {
   height: 38px;
   border-radius: 50%;
   padding: 2px;
-  background: linear-gradient(135deg, #6366f1, #06b6d4);
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
   flex-shrink: 0;
 }
 
@@ -811,141 +814,240 @@ body {
   gap: 1.5rem;
 }
 
-/* Hero Avatar Showcase */
-.hero-avatar-showcase {
+/* ==========================================================================
+   ORBITAL HOLOGRAM AVATAR SHOWCASE (Minimalist Stealth)
+   ========================================================================== */
+.orbital-hologram-showcase {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 380px;
   margin-bottom: 0.5rem;
 }
 
-.avatar-ambient-glow {
+.hologram-ambient-aura {
   position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.28) 0%, rgba(6, 182, 212, 0.14) 45%, transparent 70%);
-  filter: blur(40px);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.22) 0%, rgba(2, 132, 199, 0.12) 45%, transparent 70%);
+  filter: blur(45px);
   z-index: 0;
   pointer-events: none;
 }
 
-.hero-avatar-card {
-  position: relative;
+/* Outer Cyber Ring */
+.orbital-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbital-ring-outer {
+  width: 330px;
+  height: 330px;
+  border: 1px dashed rgba(56, 189, 248, 0.35);
+  animation: orbitClockwise 28s linear infinite;
   z-index: 1;
-  width: 100%;
-  border-radius: var(--radius-lg);
-  padding: 3px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.55) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(6, 182, 212, 0.45) 100%);
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.65);
 }
 
-.hero-avatar-image-frame {
+.orbital-ring-outer::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 12px #38bdf8;
+}
+
+.orbital-ring-outer::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7dd3fc;
+  box-shadow: 0 0 8px #7dd3fc;
+}
+
+/* Inner Counter-Rotating Ring */
+.orbital-ring-inner {
+  width: 280px;
+  height: 280px;
+  border: 1.5px solid transparent;
+  border-top-color: rgba(56, 189, 248, 0.7);
+  border-right-color: rgba(2, 132, 199, 0.4);
+  border-bottom-color: rgba(56, 189, 248, 0.15);
+  animation: orbitCounterClockwise 18s linear infinite;
+  z-index: 1;
+}
+
+/* Pulse Ring */
+.orbital-ring-pulse {
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 50%;
+  animation: pulseAura 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes orbitClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitCounterClockwise {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulseAura {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.9;
+  }
+}
+
+/* Central Circular Portrait Frame */
+.orbital-core-portrait {
   position: relative;
-  width: 100%;
-  height: 290px;
-  border-radius: calc(var(--radius-lg) - 3px);
-  overflow: hidden;
-  background: var(--bg-card-solid);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.hero-avatar-main-img {
+.orbital-portrait-border {
+  position: relative;
+  width: 215px;
+  height: 215px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(56, 189, 248, 0.8) 50%, rgba(2, 132, 199, 0.6) 100%);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.25);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.orbital-portrait-border:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 50px -10px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.4);
+}
+
+.orbital-avatar-img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: cover;
   object-position: center 20%;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
 }
 
-.hero-avatar-card:hover .hero-avatar-main-img {
-  transform: scale(1.03);
-}
-
-.hero-avatar-overlay {
+.orbital-portrait-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(8, 10, 18, 0.88) 0%, rgba(8, 10, 18, 0.15) 50%, transparent 100%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 110%, rgba(7, 9, 14, 0.45) 0%, transparent 60%);
+  pointer-events: none;
 }
 
-.hero-avatar-caption {
+/* Status Pill below Portrait */
+.orbital-status-pill {
   position: absolute;
-  bottom: 1.1rem;
-  left: 1.25rem;
-  right: 1.25rem;
-  z-index: 2;
-}
-
-.caption-name {
-  display: block;
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-}
-
-.caption-sub {
-  display: block;
-  font-size: 0.82rem;
+  bottom: -14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(11, 15, 23, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
   font-weight: 600;
-  color: #38bdf8;
+  color: #e2e8f0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  z-index: 3;
 }
 
-/* Floating chips on Hero photo */
-.hero-floating-chip {
+/* Floating Tech Chips */
+.orbital-chip {
   position: absolute;
   z-index: 3;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.6rem 0.95rem;
-  background: rgba(14, 18, 30, 0.92);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border-highlight);
+  padding: 0.65rem 1rem;
+  background: rgba(13, 17, 26, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
+  transition: border-color 0.25s, transform 0.25s;
 }
 
-.hero-floating-chip.chip-left {
-  left: -20px;
-  bottom: 25px;
+.orbital-chip:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: scale(1.03);
 }
 
-.hero-floating-chip.chip-right {
-  right: -20px;
-  top: 25px;
+.orbital-chip.chip-left {
+  left: -24px;
+  bottom: 40px;
 }
 
-.chip-icon-box {
-  width: 36px;
-  height: 36px;
+.orbital-chip.chip-right {
+  right: -24px;
+  top: 35px;
+}
+
+.orbital-chip-icon {
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   flex-shrink: 0;
 }
 
-.chip-icon-box.python {
-  background: rgba(56, 189, 248, 0.15);
+.orbital-chip-icon.ice-blue {
+  background: rgba(56, 189, 248, 0.14);
   color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
-.chip-icon-box.gold {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
+.orbital-chip-icon.electric-blue {
+  background: rgba(2, 132, 199, 0.18);
+  color: #7dd3fc;
+  border: 1px solid rgba(2, 132, 199, 0.35);
 }
 
-.chip-text strong {
+.orbital-chip-info strong {
   display: block;
   font-size: 0.84rem;
   color: #ffffff;
   line-height: 1.2;
 }
 
-.chip-text span {
+.orbital-chip-info span {
   display: block;
   font-size: 0.72rem;
-  color: var(--text-muted);
+  color: #94a3b8;
+  margin-top: 1px;
 }
 
 .terminal-window {
@@ -2894,12 +2996,12 @@ body {
     gap: 3rem;
   }
 
-  .hero-floating-chip.chip-left {
-    left: 0;
+  .orbital-chip.chip-left {
+    left: 10px;
   }
 
-  .hero-floating-chip.chip-right {
-    right: 0;
+  .orbital-chip.chip-right {
+    right: 10px;
   }
 
   .about-bento-grid {
@@ -2976,12 +3078,32 @@ body {
     padding-top: 7rem;
   }
 
-  .hero-floating-chip {
-    display: none;
+  .orbital-hologram-showcase {
+    height: 320px;
   }
 
-  .hero-avatar-image-frame {
-    height: 240px;
+  .orbital-ring-outer {
+    width: 270px;
+    height: 270px;
+  }
+
+  .orbital-ring-inner {
+    width: 230px;
+    height: 230px;
+  }
+
+  .orbital-ring-pulse {
+    width: 210px;
+    height: 210px;
+  }
+
+  .orbital-portrait-border {
+    width: 175px;
+    height: 175px;
+  }
+
+  .orbital-chip {
+    display: none;
   }
 
   .bento-portrait-frame {

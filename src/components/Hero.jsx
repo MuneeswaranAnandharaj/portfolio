@@ -188,49 +188,60 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* Hero Profile Photo Card with Floating Badges */}
-          <div className="hero-avatar-showcase">
-            <div className="avatar-ambient-glow" />
+          {/* Orbital Hologram Avatar Showcase */}
+          <div className="orbital-hologram-showcase">
+            <div className="hologram-ambient-aura" />
 
-            <div className="hero-avatar-card">
-              <div className="hero-avatar-image-frame">
+            {/* Rotating Cyber Orbital Rings */}
+            <div className="orbital-ring orbital-ring-outer" />
+            <div className="orbital-ring orbital-ring-inner" />
+            <div className="orbital-ring orbital-ring-pulse" />
+
+            {/* Circular Portrait Frame */}
+            <div className="orbital-core-portrait">
+              <div className="orbital-portrait-border">
                 <img
                   src={personalInfo.avatarUrl}
                   alt={personalInfo.name}
-                  className="hero-avatar-main-img"
+                  className="orbital-avatar-img"
                 />
-                <div className="hero-avatar-overlay" />
-                <div className="hero-avatar-caption">
-                  <span className="caption-name">{personalInfo.name}</span>
-                  <span className="caption-sub">Full-Stack & AI/ML Developer</span>
-                </div>
+                <div className="orbital-portrait-overlay" />
+              </div>
+
+              {/* Status Pill on Avatar */}
+              <div className="orbital-status-pill">
+                <span className="beacon-indicator">
+                  <span className="beacon-core" />
+                  <span className="beacon-wave" />
+                </span>
+                <span>Active • Open to Work</span>
               </div>
             </div>
 
-            {/* Floating Badges */}
+            {/* Floating Tech Badges */}
             <motion.div
-              className="hero-floating-chip chip-left"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="orbital-chip chip-left"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <div className="chip-icon-box python">
+              <div className="orbital-chip-icon ice-blue">
                 <FaPython />
               </div>
-              <div className="chip-text">
+              <div className="orbital-chip-info">
                 <strong>Full-Stack & AI</strong>
                 <span>Python • Django • React</span>
               </div>
             </motion.div>
 
             <motion.div
-              className="hero-floating-chip chip-right"
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              className="orbital-chip chip-right"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
             >
-              <div className="chip-icon-box gold">
+              <div className="orbital-chip-icon electric-blue">
                 <FiAward />
               </div>
-              <div className="chip-text">
+              <div className="orbital-chip-info">
                 <strong>IJIRT Published</strong>
                 <span>NLP & BERT Research</span>
               </div>
