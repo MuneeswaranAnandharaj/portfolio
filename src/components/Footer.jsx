@@ -19,7 +19,7 @@ export default function Footer() {
               <span className="footer-brand-title">Muneeswaran.dev</span>
             </div>
             <p className="footer-tagline">
-              Engineering full-stack architectures, high-performance Python services, and intelligent AI solutions.
+              Founder of Happy'S Software — Engineering resilient full-stack architectures, high-performance Python services, and intelligent AI solutions.
             </p>
           </div>
 

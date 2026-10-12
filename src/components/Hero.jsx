@@ -10,6 +10,7 @@ const codeSnippets = {
 class SoftwareEngineer:
     def __init__(self):
         self.name = "Muneeswaran Anandharaj"
+        self.position = "Founder of Happy'S Software"
         self.focus = ["AI & NLP", "Full-Stack SaaS", "Cloud Systems"]
         self.stack = ["Python", "Django", "FastAPI", "React", "AWS"]
         self.published = "IJIRT Research Paper (May 2025)"
@@ -19,6 +20,7 @@ class SoftwareEngineer:
         return "Building resilient systems that turn ideas into reality."`,
   json: `{
   "engineer": "Muneeswaran Anandharaj",
+  "position": "Founder of Happy'S Software",
   "location": "Madurai, India (IST)",
   "specialties": [
     "Machine Learning & Sentiment NLP",
@@ -112,8 +114,8 @@ export default function Hero() {
           </div>
 
           <p className="hero-bio-summary">
-            Computer Science engineer specialized in building production-grade web applications,
-            intelligent NLP pipelines, and multi-tenant cloud platforms using Python, Django, FastAPI, and React.
+            Founder of <strong>Happy'S Software</strong> &amp; Computer Science engineer specialized in building
+            production-grade web platforms, intelligent NLP pipelines, and scalable cloud systems using Python, Django, FastAPI, and React.
           </p>
 
           {/* Action CTAs */}
@@ -225,11 +227,11 @@ export default function Hero() {
               transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
             >
               <div className="orbital-chip-icon ice-blue">
-                <FaPython />
+                <FiLayers />
               </div>
               <div className="orbital-chip-info">
-                <strong>Full-Stack & AI</strong>
-                <span>Python • Django • React</span>
+                <strong>Founder @ Happy'S</strong>
+                <span>Software &amp; Digital Solutions</span>
               </div>
             </motion.div>
 

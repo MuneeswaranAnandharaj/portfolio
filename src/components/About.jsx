@@ -67,7 +67,7 @@ export default function About() {
               />
               <div className="bento-portrait-overlay" />
               <div className="bento-portrait-info">
-                <span className="portrait-role-badge">Software Developer</span>
+                <span className="portrait-role-badge">Founder of Happy'S Software</span>
                 <h3>{personalInfo.name}</h3>
                 <p className="portrait-location">
                   <FiMapPin /> {personalInfo.location}
@@ -99,10 +99,10 @@ export default function About() {
             </div>
             <div className="bento-story-body">
               <p>
-                I am a <strong>Software Developer</strong> holding a degree in{' '}
-                <strong>Computer Science & Engineering</strong>. My work focuses on solving complex
-                computational and product problems through clean software architecture, data modeling,
-                and applied artificial intelligence.
+                I am the <strong>Founder of Happy'S Software</strong> and a dedicated{' '}
+                <strong>Software Developer</strong> holding a degree in{' '}
+                <strong>Computer Science & Engineering</strong>. At Happy'S Software, I lead
+                the engineering of modern web platforms, intelligent automation systems, and high-performance applications.
               </p>
               <p>
                 From architecting multi-tenant SaaS platforms with asynchronous Celery queues to implementing
@@ -111,6 +111,10 @@ export default function About() {
             </div>
 
             <div className="story-highlights-list">
+              <div className="story-highlight-item">
+                <FiCheck className="highlight-check" />
+                <span>Founder & Lead Engineer at Happy'S Software</span>
+              </div>
               <div className="story-highlight-item">
                 <FiCheck className="highlight-check" />
                 <span>Specialized in Python ecosystem (Django, FastAPI, Celery, NumPy)</span>
