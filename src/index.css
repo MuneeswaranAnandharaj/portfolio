@@ -2827,8 +2827,8 @@ body {
 
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.2fr;
-  gap: 3rem;
+  grid-template-columns: 1.3fr 1.4fr 1.1fr;
+  gap: 2.5rem;
   margin-bottom: 3.5rem;
 }
 
@@ -2876,26 +2876,65 @@ body {
   margin-bottom: 1.2rem;
 }
 
-.footer-links-list {
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(110px, 1fr));
+  gap: 1.5rem;
+}
+
+.footer-links-subcol {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
+}
+
+.footer-subcol-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #38bdf8;
+  margin-bottom: 0.3rem;
+  opacity: 0.85;
 }
 
 .footer-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   background: none;
   border: none;
   text-align: left;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
   cursor: pointer;
   padding: 0.2rem 0;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-nav-btn .nav-btn-bullet {
+  color: #38bdf8;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  opacity: 0.5;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .footer-nav-btn:hover {
+  color: var(--text-white);
+  transform: translateX(3px);
+}
+
+.footer-nav-btn:hover .nav-btn-bullet {
+  opacity: 1;
+  transform: translateX(1px);
+}
+
+.footer-resume-link {
   color: #38bdf8;
+  font-weight: 500;
 }
 
 .footer-social-row {
@@ -2939,6 +2978,29 @@ body {
   border-top: 1px solid var(--border-subtle);
   font-size: 0.84rem;
   color: var(--text-muted);
+}
+
+.footer-back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.footer-back-to-top-btn:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-2px);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25);
 }
 
 /* ==========================================================================

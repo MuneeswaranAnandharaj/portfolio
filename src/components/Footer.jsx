@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiMail, FiArrowUp, FiHeart } from 'react-icons/fi'
+import { FiMail, FiArrowUp } from 'react-icons/fi'
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
 import { personalInfo } from '../data/portfolioData'
 
@@ -23,21 +23,45 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick links */}
+          {/* Rearranged Navigation links */}
           <div className="footer-nav-col">
-            <h4>Navigation</h4>
-            <div className="footer-links-list">
-              {['about', 'skills', 'projects', 'certifications', 'education', 'contact'].map(
-                (sec) => (
-                  <button
-                    key={sec}
-                    className="footer-nav-btn"
-                    onClick={() => scrollTo(sec)}
-                  >
-                    {sec.charAt(0).toUpperCase() + sec.slice(1)}
-                  </button>
-                )
-              )}
+            <h4>Quick Navigation</h4>
+            <div className="footer-links-grid">
+              <div className="footer-links-subcol">
+                <span className="footer-subcol-title">Explore</span>
+                <button className="footer-nav-btn" onClick={() => scrollTo('hero')}>
+                  <span className="nav-btn-bullet">/</span> Home
+                </button>
+                <button className="footer-nav-btn" onClick={() => scrollTo('about')}>
+                  <span className="nav-btn-bullet">/</span> About Me
+                </button>
+                <button className="footer-nav-btn" onClick={() => scrollTo('skills')}>
+                  <span className="nav-btn-bullet">/</span> Skills
+                </button>
+                <button className="footer-nav-btn" onClick={() => scrollTo('projects')}>
+                  <span className="nav-btn-bullet">/</span> Projects
+                </button>
+              </div>
+
+              <div className="footer-links-subcol">
+                <span className="footer-subcol-title">Credentials</span>
+                <button className="footer-nav-btn" onClick={() => scrollTo('certifications')}>
+                  <span className="nav-btn-bullet">/</span> Certifications
+                </button>
+                <button className="footer-nav-btn" onClick={() => scrollTo('education')}>
+                  <span className="nav-btn-bullet">/</span> Education
+                </button>
+                <button className="footer-nav-btn" onClick={() => scrollTo('contact')}>
+                  <span className="nav-btn-bullet">/</span> Contact
+                </button>
+                <a
+                  href={personalInfo.resumeUrl}
+                  download={personalInfo.resumeFilename}
+                  className="footer-nav-btn footer-resume-link"
+                >
+                  <span className="nav-btn-bullet">/</span> Resume (CV)
+                </a>
+              </div>
             </div>
           </div>
 
@@ -82,9 +106,13 @@ export default function Footer() {
           <p className="copyright-text">
             &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
           </p>
-          <p className="footer-built-with">
-            Built with React, Framer Motion & Vite
-          </p>
+          <button
+            className="footer-back-to-top-btn"
+            onClick={() => scrollTo('hero')}
+            title="Scroll to top of page"
+          >
+            Back to Top <FiArrowUp />
+          </button>
         </div>
       </div>
     </footer>
